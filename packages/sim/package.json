@@ -1,0 +1,26 @@
+{
+  "name": "@whiteboard/sim",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "sim": "node ./dist/run200.js",
+    "sim:real": "node ./dist/runReal.js"
+  },
+  "dependencies": {
+    "@whiteboard/server": "workspace:*",
+    "@whiteboard/shared": "workspace:*",
+    "ws": "^8.18.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.14",
+    "fast-check": "^3.23.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

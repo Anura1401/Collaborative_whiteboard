@@ -1,0 +1,23 @@
+export const MAX_OBJECTS_PER_BOARD = 5000;
+export const MAX_STROKE_NUMBERS = 10000; // flat x,y list length (up to 5000 points)
+export const MAX_TEXT_LENGTH = 2000;
+export const MAX_COORD = 1000000;
+export const MIN_SIZE = 1;
+export const MAX_SIZE = 100000;
+export const MIN_STROKE_WIDTH = 1;
+export const MAX_STROKE_WIDTH = 50;
+export const MIN_FONT_SIZE = 8;
+export const MAX_FONT_SIZE = 200;
+export const MIN_TEXT_WIDTH = 20;
+export const MAX_NAME_LENGTH = 40;
+export const MAX_BOARD_NAME_LENGTH = 80;
+export const MAX_CHANGES_PER_OP = 8;
+
+export const WS_MAX_PAYLOAD_BYTES = 65536;
+export const OP_RATE_PER_SEC = 30;
+export const EPHEMERAL_RATE_PER_SEC = 30;
+export const SNAPSHOT_EVERY = 500;
+export const RING_BUFFER_SIZE = 1000;
+export const ROOM_IDLE_EVICT_MS = 300000;
+export const MAX_CLIENTS_PER_ROOM = 50;
+export const TICKET_TTL_SECONDS = 30;

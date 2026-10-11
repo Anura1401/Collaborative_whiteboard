@@ -1,0 +1,31 @@
+{
+  "name": "whiteboard-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @whiteboard/server --filter @whiteboard/web dev",
+    "test": "vitest run",
+    "test:int": "pnpm --filter @whiteboard/server test:int",
+    "sim": "pnpm --filter @whiteboard/sim run sim",
+    "sim:real": "pnpm --filter @whiteboard/sim run sim:real",
+    "e2e": "pnpm --filter @whiteboard/web test:e2e",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "pnpm -r typecheck",
+    "db:migrate": "pnpm --filter @whiteboard/server db:migrate",
+    "build": "pnpm -r build",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/node": "^22.13.4",
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^10.0.1",
+    "globals": "^15.15.0",
+    "prettier": "^3.5.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0",
+    "vitest": "^3.0.5"
+  }
+}
