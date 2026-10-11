@@ -14,10 +14,19 @@ let isInMemory = false;
 
 export function getPool(): DbPool {
   if (!activePool) {
+    const isCloudDb =
+      config.DATABASE_URL.includes('sslmode=require') ||
+      config.DATABASE_URL.includes('render.com') ||
+      config.DATABASE_URL.includes('railway.app') ||
+      config.DATABASE_URL.includes('supabase') ||
+      config.DATABASE_URL.includes('neon.tech') ||
+      process.env.DATABASE_SSL === 'true';
+
     activePool = new Pool({
       connectionString: config.DATABASE_URL,
       max: 10,
-      connectionTimeoutMillis: 1500,
+      connectionTimeoutMillis: 5000,
+      ssl: isCloudDb ? { rejectUnauthorized: false } : undefined,
     });
   }
   return activePool;

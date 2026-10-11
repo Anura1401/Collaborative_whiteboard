@@ -62,10 +62,21 @@ export class Connection {
 
     let wsBaseUrl = import.meta.env.VITE_WS_URL;
     if (!wsBaseUrl) {
-      const loc = window.location;
-      const protocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
-      const host = loc.hostname === 'localhost' || loc.hostname === '127.0.0.1' ? `${loc.hostname}:8080` : loc.host;
-      wsBaseUrl = `${protocol}//${host}`;
+      if (apiUrl) {
+        try {
+          const parsed = new URL(apiUrl, window.location.href);
+          const proto = parsed.protocol === 'https:' ? 'wss:' : 'ws:';
+          wsBaseUrl = `${proto}//${parsed.host}`;
+        } catch {
+          // ignore parsing error and fallback to window.location
+        }
+      }
+      if (!wsBaseUrl) {
+        const loc = window.location;
+        const protocol = loc.protocol === 'https:' ? 'wss:' : 'ws:';
+        const host = loc.hostname === 'localhost' || loc.hostname === '127.0.0.1' ? `${loc.hostname}:8080` : loc.host;
+        wsBaseUrl = `${protocol}//${host}`;
+      }
     }
 
     const wsUrl = `${wsBaseUrl}/ws?ticket=${encodeURIComponent(ticket)}`;
