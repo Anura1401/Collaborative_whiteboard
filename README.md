@@ -1,10 +1,10 @@
-# 🎨 Collaborative Whiteboard
+#  Collaborative Whiteboard
 
 A high-performance, real-time collaborative whiteboard built with a **server-authoritative, ordered-log architecture**. Multiple users can seamlessly draw, transform objects, and collaborate concurrently with sub-millisecond local latency, live cursors, ghost drag previews, and 100% eventual state convergence.
 
 ---
 
-## ⚡ Highlights
+##  Highlights
 
 - **Server-Authoritative Ordered Log**: No complex CRDTs or clock drift. The server linearizes operations into a strict sequence log.
 - **Optimistic Reconciliation (0ms Latency)**: Local edits apply immediately to a pending queue; the UI automatically reconciles against server ACKs and rolls back on NACKs.
@@ -15,7 +15,7 @@ A high-performance, real-time collaborative whiteboard built with a **server-aut
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 Browser (React + Canvas 2D + Zustand)
@@ -42,7 +42,7 @@ PostgreSQL (Ordered Operations Log & Snapshots)
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Frontend**: React 19, Vite, TypeScript, HTML5 Canvas 2D, Lucide Icons
 - **Backend**: Node.js, Fastify, `ws` (WebSockets), `node-pg-migrate`
@@ -52,7 +52,7 @@ PostgreSQL (Ordered Operations Log & Snapshots)
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Prerequisites
 - [Node.js](https://nodejs.org/) (v20+)
@@ -81,7 +81,7 @@ Starts both servers concurrently:
 
 ---
 
-## ⚙️ Configuration (`.env`)
+##  Configuration (`.env`)
 
 | Variable | Default | Description |
 | :--- | :--- | :--- |
@@ -94,7 +94,7 @@ Starts both servers concurrently:
 
 ---
 
-## ⌨️ Canvas Shortcuts
+##  Canvas Shortcuts
 
 | Action | Shortcut |
 | :--- | :--- |
@@ -109,7 +109,7 @@ Starts both servers concurrently:
 
 ---
 
-## 🧪 Testing & Verification
+##  Testing & Verification
 
 ```powershell
 # Run all unit and integration tests across monorepo
@@ -124,6 +124,6 @@ pnpm typecheck
 
 ---
 
-## 📄 License
+##  License
 
 MIT © [Anura](https://github.com/Anura1401)
