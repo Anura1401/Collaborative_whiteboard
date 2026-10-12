@@ -30,4 +30,3 @@ databases:
   - name: whiteboard-db
     plan: free
     databaseName: whiteboard
-    user: postgres
