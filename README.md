@@ -124,6 +124,32 @@ pnpm typecheck
 
 ---
 
-##  License
+## 🌐 Deployment
+
+### 1. Render Blueprint (Recommended, 1-Click)
+
+The repository includes a ready-to-use [`render.yaml`](render.yaml) blueprint configuring a managed PostgreSQL database and the unified web service.
+
+1. Go to the [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** and select **Blueprint**.
+3. Connect your GitHub repository: `Anura1401/Collaborative_whiteboard`.
+4. Render will detect `render.yaml` and provision:
+   - **`whiteboard-db`**: Managed PostgreSQL database.
+   - **`whiteboard-app`**: Node.js web service serving the React canvas, API, and WebSockets.
+5. Click **Apply**. Once built, your whiteboard is live with automatic SSL!
+
+### 2. Docker / Self-Hosted VPS
+
+To run the complete production stack (PostgreSQL + App) with Docker Compose:
+
+```powershell
+docker compose up -d --build
+```
+
+Access the whiteboard in your browser at `http://localhost:8080`.
+
+---
+
+## 📄 License
 
 MIT © [Anura](https://github.com/Anura1401)
