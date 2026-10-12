@@ -31,6 +31,7 @@ COPY --from=builder /app/packages/shared ./packages/shared
 COPY --from=builder /app/apps/server/dist ./apps/server/dist
 COPY --from=builder /app/apps/server/package.json ./apps/server/package.json
 COPY --from=builder /app/apps/server/migrations ./apps/server/migrations
+COPY --from=builder /app/apps/web/dist ./apps/web/dist
 
 EXPOSE 8080
 

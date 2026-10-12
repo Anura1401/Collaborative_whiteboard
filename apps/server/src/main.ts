@@ -1,6 +1,10 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import rateLimit from '@fastify/rate-limit';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fastifyStatic from '@fastify/static';
 import { config } from './config.js';
 import { runMigrations, closePool } from './db/pool.js';
 import { registerRoutes, setShuttingDown } from './http/routes.js';
@@ -37,6 +41,30 @@ export async function buildApp() {
   });
 
   await registerRoutes(fastify);
+
+  // Serve static frontend build if present (for single-container production deployment)
+  const currentDir = path.dirname(fileURLToPath(import.meta.url));
+  const possibleDistPaths = [
+    path.resolve(currentDir, '../../web/dist'),
+    path.resolve(process.cwd(), 'apps/web/dist'),
+    path.resolve(process.cwd(), 'web/dist'),
+  ];
+  const clientDist = possibleDistPaths.find((p) => fs.existsSync(p));
+
+  if (clientDist) {
+    await fastify.register(fastifyStatic, {
+      root: clientDist,
+      prefix: '/',
+    });
+
+    fastify.setNotFoundHandler((req, reply) => {
+      const url = req.raw.url || '';
+      if (url.startsWith('/api') || url.startsWith('/healthz') || url.startsWith('/readyz')) {
+        return reply.code(404).send({ error: 'Not Found', message: `${url} not found` });
+      }
+      return reply.sendFile('index.html');
+    });
+  }
 
   const wsGateway = createWebSocketGateway();
 

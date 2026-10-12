@@ -16,6 +16,7 @@
   "dependencies": {
     "@fastify/cors": "^10.0.2",
     "@fastify/rate-limit": "^10.2.2",
+    "@fastify/static": "^10.1.6",
     "@whiteboard/shared": "workspace:*",
     "fastify": "^5.2.1",
     "node-pg-migrate": "^7.9.1",

@@ -1,9 +1,9 @@
 services:
   # ============================================================================
-  # 1. Backend Web Service (Fastify + WebSockets)
+  # Full-Stack Web Service (Fastify HTTP + WebSockets + React Canvas UI)
   # ============================================================================
   - type: web
-    name: whiteboard-server
+    name: whiteboard-app
     runtime: node
     plan: free
     buildCommand: pnpm install && pnpm -r build
@@ -22,27 +22,6 @@ services:
         fromDatabase:
           name: whiteboard-db
           property: connectionString
-
-  # ============================================================================
-  # 2. Frontend Static Site (React 19 + Canvas)
-  # ============================================================================
-  - type: web
-    name: whiteboard-web
-    runtime: static
-    plan: free
-    buildCommand: pnpm install && pnpm --filter @whiteboard/shared build && pnpm --filter @whiteboard/web build
-    staticPublishPath: ./apps/web/dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: whiteboard-server
-          property: host
-          # Will inject https://whiteboard-server.onrender.com
 
 # ==============================================================================
 # Managed PostgreSQL Database

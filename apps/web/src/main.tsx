@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BoardView } from './routes/BoardView.js';
 import { NotFound } from './routes/NotFound.js';
+import { getApiBaseUrl } from './net/apiConfig.js';
 import './styles/index.css';
 
 export function App(): React.JSX.Element {
@@ -23,7 +24,7 @@ export function App(): React.JSX.Element {
 
     if (path === '/' || path === '') {
       // Auto-create or fetch default board
-      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const apiUrl = getApiBaseUrl();
       fetch(`${apiUrl}/api/boards`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

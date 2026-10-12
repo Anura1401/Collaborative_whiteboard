@@ -4,6 +4,7 @@ import { CanvasEngine } from '../canvas/CanvasEngine.js';
 import { createDefaultCamera, setZoomAt, zoomAt, type Camera } from '../canvas/camera.js';
 import { boardStore, type ConnectionStatus } from '../store/boardStore.js';
 import { Connection } from '../net/Connection.js';
+import { getApiBaseUrl } from '../net/apiConfig.js';
 import { TopBar } from '../ui/TopBar.js';
 import { Toolbar } from '../ui/Toolbar.js';
 import { LayersPanel } from '../ui/LayersPanel.js';
@@ -55,7 +56,7 @@ export function BoardView({ boardId }: BoardViewProps): React.JSX.Element {
 
   // Fetch board info and initialize WebSocket connection
   useEffect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || '';
+    const apiUrl = getApiBaseUrl();
     fetch(`${apiUrl}/api/boards/${boardId}`)
       .then((res) => {
         if (res.ok) return res.json();

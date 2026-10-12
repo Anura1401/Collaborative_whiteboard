@@ -1,5 +1,6 @@
 import type { ClientMsg, ServerMsg } from '@whiteboard/shared';
 import { getClientId, getDisplayName } from './identity.js';
+import { getApiBaseUrl } from './apiConfig.js';
 
 export interface ConnectionHandler {
   onStatusChange: (status: 'CONNECTING' | 'SYNCING' | 'LIVE' | 'DISCONNECTED') => void;
@@ -43,7 +44,7 @@ export class Connection {
     const clientId = getClientId();
     const displayName = getDisplayName();
 
-    const apiUrl = import.meta.env.VITE_API_URL || '';
+    const apiUrl = getApiBaseUrl();
     const res = await fetch(`${apiUrl}/api/boards/${this.boardId}/ws-ticket`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
