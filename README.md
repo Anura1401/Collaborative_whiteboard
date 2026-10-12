@@ -1,4 +1,8 @@
-#  Collaborative Whiteboard
+# 🎨 Collaborative Whiteboard
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-whiteboard--app--cuta.onrender.com-success?style=for-the-badge&logo=render)](https://whiteboard-app-cuta.onrender.com)
+
+🔗 **Live Demo**: [https://whiteboard-app-cuta.onrender.com](https://whiteboard-app-cuta.onrender.com)
 
 A high-performance, real-time collaborative whiteboard built with a **server-authoritative, ordered-log architecture**. Multiple users can seamlessly draw, transform objects, and collaborate concurrently with sub-millisecond local latency, live cursors, ghost drag previews, and 100% eventual state convergence.
 
@@ -129,6 +133,8 @@ pnpm typecheck
 ### 1. Render Blueprint (Recommended, 1-Click)
 
 The repository includes a ready-to-use [`render.yaml`](render.yaml) blueprint configuring a managed PostgreSQL database and the unified web service.
+
+🔗 **Production URL**: [https://whiteboard-app-cuta.onrender.com](https://whiteboard-app-cuta.onrender.com)
 
 1. Go to the [Render Dashboard](https://dashboard.render.com).
 2. Click **New +** and select **Blueprint**.
